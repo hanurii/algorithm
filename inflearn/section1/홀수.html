@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(arr){
+    let answer=[];
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] % 2 === 1) {
+        answer.push(arr[i])
+      }
+    }
+
+    let min = answer[0];
+    for (let i = 1; i < answer.length - 1; i++) {
+      if (min > answer[i]) {
+        min = answer[i]
+      }
+    }
+
+    let sum = 0;
+    for (let i = 0; i < answer.length; i++) {
+      sum = sum + answer[i]
+    }
+
+    return `${sum} \n${min}`
+  }
+
+  arr=[12, 77, 38, 41, 53, 92, 85];
+  console.log(solution(arr));
+</script>
+</body>
+</html>
