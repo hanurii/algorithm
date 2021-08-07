@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution1(s){
+    let answer = '';
+    for (let x of s) {
+      if (x === 'A') answer += '#'
+      else answer += x
+    }
+    return answer
+  }
+
+  function solution2(s) {
+    let answer = s.split('')
+    for (let i = 0; i < answer.length; i++) {
+      if (answer[i] === 'A') {
+        answer[i] = '#'
+      }
+    }
+    return answer.join('');
+  }
+
+  function solution3(s) {
+    let answer = s; // 문자열인 경우 값 복사임 (주소 참조 ㄴㄴ)
+    answer = answer.replace(/A/g, '#')
+    return answer;
+  }
+
+  let str="BANANA";
+  console.log(solution1(str));
+  console.log(solution2(str));
+  console.log(solution3(str));
+</script>
+</body>
+</html>
