@@ -6,27 +6,20 @@
 <body>
 <script>
   function solution(arr){
-    let answer=[];
-
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] % 2 === 1) {
-        answer.push(arr[i])
-      }
-    }
-
-    let min = answer[0];
-    for (let i = 1; i < answer.length - 1; i++) {
-      if (min > answer[i]) {
-        min = answer[i]
-      }
-    }
-
+    let answer = [];
     let sum = 0;
-    for (let i = 0; i < answer.length; i++) {
-      sum = sum + answer[i]
-    }
+    let min = Number.MAX_SAFE_INTEGER;
 
-    return `${sum} \n${min}`
+    for(let x of arr) {
+      if (x % 2 === 1) {
+        sum += x;
+        if (x < min) min = x
+      }
+    }
+    answer.push(sum);
+    answer.push(min);
+
+    return answer;
   }
 
   arr=[12, 77, 38, 41, 53, 92, 85];
