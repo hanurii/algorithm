@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s){
+    let answer = '';
+    answer = s.replace(/[A-Z]/g, '#')
+    answer = answer.split('#').length
+    return answer - 1;
+  }
+
+  function solution2(s) {
+    let answer = 0;
+    for (let x of s) {
+      //let num=x.charCodeAt();
+      //if(num>=65 && num<=90) answer++;
+      if (x === x.toUpperCase()) answer++
+    }
+    return answer;
+  }
+
+  let str="HanUlHyunJoo";
+  console.log(solution(str));
+  console.log(solution2(str));
+</script>
+</body>
+</html>
