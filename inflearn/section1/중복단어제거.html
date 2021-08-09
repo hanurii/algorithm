@@ -14,8 +14,20 @@
 
     return answer;
   }
+
+  function solution2(arr) {
+    let answer;
+
+    answer = arr.filter((word, i) => {
+      return arr.indexOf(word) === i;
+    });
+
+    return answer;
+  }
+
   let arr=["good", "time", "good", "time", "student"];
   console.log(solution(arr));
+  console.log(solution2(arr));
 </script>
 </body>
 </html>
