@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(str){
+    return parseInt(str.replace(/[A-Za-z]/g, ''), 10);
+  }
+
+  function solution2(str) {
+    let answer = "";
+    for (let x of str) {
+      if (!isNaN(x)) answer += x;
+    }
+    return parseInt(answer, 10);
+  }
+
+  function solution3(str) {
+    let answer = 0;
+    for (let x of str) {
+      if (!isNaN(x)) answer = answer*10 + Number(x);
+    }
+    return answer;
+  }
+
+  let str="g0en2T0s8eSoft";
+  console.log(solution(str));
+  console.log(solution2(str));
+  console.log(solution3(str));
+</script>
+</body>
+</html>
