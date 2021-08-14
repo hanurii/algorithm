@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s){
+    let answer = 'NO'
+    let n = s.length;
+    let count = 0;
+    let mid = Math.floor(n / 2)
+
+    if (n % 2 === 0) {
+      for (let i = 0; i < mid; i++) {
+        if ([s[i].toUpperCase() === s[n - i - 1].toUpperCase()]) count++
+      }
+      if (count === mid) {
+        answer = "YES"
+      }
+    } else {
+      for (let i = 0; i < mid; i++) {
+        if ([s[i].toUpperCase() === s[n - i - 1].toUpperCase()]) count++
+      }
+      if (count === mid) {
+        return "YES"
+      }
+    }
+
+    return answer;
+  }
+
+  function solution2(s) {
+    let answer = "YES";
+    s = s.toLowerCase();
+    let len = s.length;
+    for (let i = 0; i < Math.floor(len/2); i++) {
+      if (s[i] !== s[len-i-1]) return "NO";
+    }
+    return answer;
+  }
+
+  function solution3(s) {
+    let answer="YES";
+    s=s.toLowerCase();
+    if(s !== s.split('').reverse().join('')) return "NO";
+    return answer;
+  }
+
+  let str="abcbb";
+  console.log(solution(str));
+  console.log(solution2(str));
+  console.log(solution3(str));
+</script>
+</body>
+</html>
+
+
+
