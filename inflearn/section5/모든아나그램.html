@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+<script>
+  function solution(s, t){
+    let answer=0;
+    let sH = new Map();
+
+    for (let i = 0; i < s.length - t.length + 1; i++) {
+      let str = s.slice(i, i + t.length);
+
+      for (let x of str) {
+        if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+        else sH.set(x, 1);
+      }
+
+      for (let x of t) {
+        if (!sH.has(x) || sH.get(x) === 0) {
+          sH = new Map();
+          break;
+        }
+        else sH.set(x, sH.get(x) - 1);
+      }
+
+      if (Math.max(...sH.values()) === 0) {
+        answer++;
+      }
+      sH.clear();
+    }
+    return answer;
+  }
+
+  function compareMaps(map1, map2) {
+    if (map1.size !== map2.size) return false;
+    for (let [key, value] of map1) {
+      if (!map2.has(key) || map2.get(key) !== value) return false;
+    }
+    return true;
+  }
+
+  function solution2(s, t) {
+    let answer = 0;
+    let tH = new Map();
+    let sH = new Map();
+    for (let x of t) {
+      if (tH.has(x)) tH.set(x, tH.get(x) + 1);
+      else tH.set(x, 1);
+    }
+    let len = t.length - 1;
+    for (let i = 0; i < len; i++) {
+      if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
+      else sH.set(s[i], 1);
+    }
+    let lt = 0;
+    for (let rt = len; rt < s.length; rt++) {
+      if (sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
+      else sH.set(s[rt], 1);
+      if (compareMaps(sH, tH)) answer++;
+      sH.set(s[lt], sH.get(s[lt]) - 1);
+      if (sH.get(s[lt]) === 0) sH.delete(s[lt]);
+      lt++;
+    }
+
+    return answer;
+  }
+
+  let a="bacaAacba";
+  let b="abc";
+  console.log(solution(a, b));
+  console.log(solution2(a, b));
+</script>
+</body>
+</html>
